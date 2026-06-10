@@ -1,0 +1,32 @@
+/* ===================================================
+ * Space-AI — Global Styles
+ * =================================================== */
+
+/* 1. Tipografía — Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* 2. Angular Material — Tema prebuilt (Indigo + Pink) */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* 3. TailwindCSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 4. CSS Custom Properties — Design System Base */
+:root {
+  --color-primary: #6366f1;   /* indigo-500  */
+  --color-accent:  #ec4899;   /* pink-500    */
+  --color-bg:      #0f172a;   /* slate-900   */
+  --color-surface: #1e293b;   /* slate-800   */
+  --color-text:    #f1f5f9;   /* slate-100   */
+}
+
+/* 5. Reset base */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}

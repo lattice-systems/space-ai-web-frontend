@@ -1,0 +1,2 @@
+# Core — Servicios singleton, guards e interceptors globales
+# Los servicios aquí se proveen en la raíz con providedIn: 'root'
