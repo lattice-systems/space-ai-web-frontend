@@ -105,6 +105,24 @@ Abre tu navegador en **[http://localhost:4200](http://localhost:4200)**. La app 
 
 ---
 
+### 6. Servidor Mock (Backend Simulado) y Credenciales de Prueba
+
+Para simular las APIs de autenticación durante el desarrollo (Sprint 1), se utiliza un servidor mock basado en `json-server` que expone los endpoints requeridos.
+
+#### Iniciar el servidor mock
+En una terminal secundaria, ejecuta:
+```bash
+node mock/mock-server.js
+```
+El servidor de pruebas se levantará en **[http://localhost:3000](http://localhost:3000)**.
+
+#### Credenciales de Acceso
+Usa las siguientes credenciales para iniciar sesión:
+- **Correo Electrónico:** `admin@spaceia.edu`
+- **Contraseña:** `Admin123!`
+
+---
+
 ## 📦 Comandos Disponibles
 
 | Comando | Descripción |
