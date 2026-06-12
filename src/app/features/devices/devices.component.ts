@@ -57,8 +57,7 @@ interface DeviceCategory {
                   >{{ cat.count }}</p>
                 </div>
                 <span
-                  class="text-xs font-semibold px-2 py-1 rounded-full shrink-0"
-                  [class]="statusClass(cat.status)"
+                  [class]="'text-xs font-semibold px-2 py-1 rounded-full shrink-0 ' + statusClass(cat.status)"
                 >{{ cat.status }}</span>
               </div>
             </mat-card-content>
