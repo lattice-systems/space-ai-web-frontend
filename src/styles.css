@@ -51,18 +51,3 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 6. Active nav link — Stitch: light blue bg + primary text */
-.nav-item-active {
-  background-color: #EBF3FF !important;
-  color: var(--color-primary) !important;
-}
-
-.nav-item-active .mat-icon,
-.nav-item-active mat-icon {
-  color: var(--color-primary) !important;
-}
-
-.nav-item-active span {
-  font-weight: 600 !important;
-  color: var(--color-primary) !important;
-}
