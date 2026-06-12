@@ -1,11 +1,15 @@
 /* ===================================================
  * SpaceIA — Global Styles
+ * SpaceIA — Global Styles
  * =================================================== */
 
 /* 1. Tipografía — Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined');
 
+/* 2. Angular Material — Tema prebuilt */
 /* 2. Angular Material — Tema prebuilt */
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
@@ -15,7 +19,30 @@
 @tailwind utilities;
 
 /* 4. Design Tokens — SpaceIA (Stitch reference) */
+/* 4. Design Tokens — SpaceIA (Stitch reference) */
 :root {
+  --color-primary:        #004A99;
+  --color-primary-light:  #0062CC;
+  --color-primary-dark:   #003B7A;
+  --color-accent:         #00D1FF;
+  --color-bg:             #F8FAFC;
+  --color-surface:        #FFFFFF;
+  --color-neutral:        #64748B;
+  --color-neutral-light:  #E2E8F0;
+  --color-text:           #1E293B;
+  --color-text-muted:     #94A3B8;
+
+  /* Layout — matched to Stitch screenshot */
+  --sidebar-width:        192px;
+  --topbar-height:        56px;
+
+  /* Radii & Shadows */
+  --radius-sm:            6px;
+  --radius:               10px;
+  --radius-lg:            14px;
+  --shadow-xs:            0 1px 2px rgba(0,0,0,.06);
+  --shadow-sm:            0 1px 4px rgba(0,0,0,.08);
+  --shadow-md:            0 4px 16px rgba(0,0,0,.08);
   --color-primary:        #004A99;
   --color-primary-light:  #0062CC;
   --color-primary-dark:   #003B7A;
@@ -66,3 +93,4 @@ html, body {
   font-weight: 600 !important;
   color: var(--color-primary) !important;
 }
+

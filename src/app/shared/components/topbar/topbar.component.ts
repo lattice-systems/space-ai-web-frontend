@@ -245,7 +245,7 @@ const CATEGORY_COLOR: Record<string, string> = {
 
         <div class="notif-wrap">
           <button mat-icon-button [matMenuTriggerFor]="notificationsMenu" aria-label="Ver notificaciones">
-            <mat-icon>notifications_outlined</mat-icon>
+            <mat-icon fontSet="material-icons-outlined">notifications</mat-icon>
           </button>
           <span class="notif-badge" aria-label="3 notificaciones">3</span>
         </div>
@@ -261,7 +261,7 @@ const CATEGORY_COLOR: Record<string, string> = {
       </div>
 
       <!-- ── Menú notificaciones ── -->
-      <mat-menu #notificationsMenu="matMenu" xPosition="before" class="!min-w-80">
+      <mat-menu #notificationsMenu="matMenu" xPosition="before" [panelClass]="'!min-w-80'">
         <div class="px-4 py-3 border-b border-slate-100 pointer-events-none">
           <p class="text-sm font-semibold text-slate-800 m-0">Notificaciones</p>
           <p class="text-xs m-0 text-slate-400">3 sin leer</p>

@@ -172,18 +172,18 @@ interface FutureItem {
 })
 export class SidebarComponent {
   readonly navItems: NavItem[] = [
-    { label: 'Panel Principal', icon: 'dashboard',  route: '/dashboard' },
-    { label: 'Usuarios',        icon: 'group',       route: '/users'     },
-    { label: 'Mapa del Campus', icon: 'map',         route: '/map'       },
-    { label: 'Dispositivos',    icon: 'device_hub',  route: '/devices'   },
+    { label: 'Panel Principal', icon: 'dashboard', route: '/dashboard' },
+    { label: 'Usuarios', icon: 'group', route: '/users' },
+    { label: 'Mapa del Campus', icon: 'map', route: '/map' },
+    { label: 'Dispositivos', icon: 'device_hub', route: '/devices' },
   ];
 
   readonly futureItems: FutureItem[] = [
-    { label: 'Identidad Digital',  icon: 'badge'                  },
-    { label: 'Control de Acceso',  icon: 'lock'                   },
-    { label: 'Asistente IA',       icon: 'smart_toy'              },
-    { label: 'Robot Monitor',      icon: 'precision_manufacturing' },
-    { label: 'Analíticas',         icon: 'bar_chart'              },
-    { label: 'Configuración',      icon: 'settings'               },
+    { label: 'Identidad Digital', icon: 'badge' },
+    { label: 'Control de Acceso', icon: 'lock' },
+    { label: 'Asistente IA', icon: 'smart_toy' },
+    { label: 'Robot Monitor', icon: 'precision_manufacturing' },
+    { label: 'Analíticas', icon: 'bar_chart' },
+    { label: 'Configuración', icon: 'settings' },
   ];
 }

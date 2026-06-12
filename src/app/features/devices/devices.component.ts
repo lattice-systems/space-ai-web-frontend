@@ -57,8 +57,7 @@ interface DeviceCategory {
                   >{{ cat.count }}</p>
                 </div>
                 <span
-                  class="text-xs font-semibold px-2 py-1 rounded-full shrink-0"
-                  [class]="statusClass(cat.status)"
+                  [class]="'text-xs font-semibold px-2 py-1 rounded-full shrink-0 ' + statusClass(cat.status)"
                 >{{ cat.status }}</span>
               </div>
             </mat-card-content>
@@ -91,18 +90,18 @@ interface DeviceCategory {
 })
 export class DevicesComponent {
   readonly categories: DeviceCategory[] = [
-    { label: 'Sensores Inteligentes', icon: 'sensors',                count: 38, status: 'en línea'      },
-    { label: 'Control de Acceso',     icon: 'lock',                   count: 24, status: 'mixto'         },
-    { label: 'Robot Inteligente',     icon: 'precision_manufacturing', count: 2,  status: 'en línea'      },
-    { label: 'Cámaras IP',            icon: 'videocam',               count: 12, status: 'en línea'      },
-    { label: 'Gateways MQTT',         icon: 'router',                 count: 6,  status: 'mixto'         },
-    { label: 'Kioscos',               icon: 'tablet_android',         count: 2,  status: 'desconectado'  },
+    { label: 'Sensores Inteligentes', icon: 'sensors', count: 38, status: 'en línea' },
+    { label: 'Control de Acceso', icon: 'lock', count: 24, status: 'mixto' },
+    { label: 'Robot Inteligente', icon: 'precision_manufacturing', count: 2, status: 'en línea' },
+    { label: 'Cámaras IP', icon: 'videocam', count: 12, status: 'en línea' },
+    { label: 'Gateways MQTT', icon: 'router', count: 6, status: 'mixto' },
+    { label: 'Kioscos', icon: 'tablet_android', count: 2, status: 'desconectado' },
   ];
 
   statusClass(status: string): string {
     const map: Record<string, string> = {
-      'en línea':     'bg-emerald-100 text-emerald-700',
-      'mixto':        'bg-amber-100 text-amber-700',
+      'en línea': 'bg-emerald-100 text-emerald-700',
+      'mixto': 'bg-amber-100 text-amber-700',
       'desconectado': 'bg-red-100 text-red-700',
     };
     return map[status] ?? '';
