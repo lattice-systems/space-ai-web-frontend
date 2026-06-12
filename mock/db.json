@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": "uuid-123",
+      "name": "Administrador SpaceIA",
+      "email": "admin@spaceia.edu",
+      "password": "Admin123!",
+      "folio": "ADM001",
+      "role": "admin"
+    }
+  ]
+}
