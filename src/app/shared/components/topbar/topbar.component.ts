@@ -245,7 +245,7 @@ const CATEGORY_COLOR: Record<string, string> = {
 
         <div class="notif-wrap">
           <button mat-icon-button [matMenuTriggerFor]="notificationsMenu" aria-label="Ver notificaciones">
-            <mat-icon>notifications_outlined</mat-icon>
+            <mat-icon fontSet="material-icons-outlined">notifications</mat-icon>
           </button>
           <span class="notif-badge" aria-label="3 notificaciones">3</span>
         </div>
