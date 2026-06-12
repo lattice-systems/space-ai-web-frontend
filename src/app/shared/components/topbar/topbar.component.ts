@@ -339,23 +339,6 @@ export class TopbarComponent {
   );
 
   /** Resultados filtrados del catálogo */
-  readonly results = toSignal(
-    this.searchCtrl.valueChanges.pipe(
-      debounceTime(150),
-      distinctUntilChanged(),
-      map((value) => {
-        const query = (typeof value === 'string' ? value : value?.label ?? '').trim().toLowerCase();
-        if (query.length < 2) return [];
-        return SEARCH_CATALOG.filter(
-          (item) =>
-            item.label.toLowerCase().includes(query) ||
-            item.subtitle.toLowerCase().includes(query) ||
-            item.category.toLowerCase().includes(query)
-        ).slice(0, 10); // máx 10 resultados
-      })
-    ),
-    { initialValue: [] as SearchItem[] }
-  );
 
   /** Resultados agrupados por categoría */
   readonly groupedResults = toSignal(
