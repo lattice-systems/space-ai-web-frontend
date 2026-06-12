@@ -20,7 +20,7 @@ interface FutureItem {
   selector: 'app-sidebar',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, RouterLinkActive, MatIconModule, MatRippleModule],
+  imports: [RouterLink, RouterLinkActive, MatIconModule],
   styles: [`
     :host {
       display: flex;
