@@ -23,7 +23,7 @@ import { TopbarComponent } from '../../components/topbar/topbar.component';
     TopbarComponent,
   ],
   template: `
-    <mat-sidenav-container class="h-screen w-screen" autosize>
+    <mat-sidenav-container class="h-screen w-full">
 
       <!-- ─── Sidebar ─── -->
       <mat-sidenav
