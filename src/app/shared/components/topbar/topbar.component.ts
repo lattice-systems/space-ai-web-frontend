@@ -310,17 +310,6 @@ export class TopbarComponent {
   private readonly router = inject(Router);
 
   // ── Título dinámico por ruta ──────────────────────────────────────────────
-  readonly currentTitle = toSignal(
-    this.router.events.pipe(
-      filter((e) => e instanceof NavigationEnd),
-      map((e) => {
-        const segment = (e as NavigationEnd).urlAfterRedirects.split('/')[1];
-        return ROUTE_TITLES[segment] ?? 'SpaceIA';
-      }),
-      startWith(ROUTE_TITLES[this.router.url.split('/')[1]] ?? 'SpaceIA')
-    ),
-    { initialValue: 'Panel Principal' }
-  );
 
   // ── Buscador ──────────────────────────────────────────────────────────────
   readonly searchCtrl = new FormControl<string | SearchItem>('');
