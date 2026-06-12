@@ -2,6 +2,28 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
+    path: 'auth',
+    loadComponent: () =>
+      import('./features/auth/auth-layout/auth-layout.component').then(
+        (m) => m.AuthLayoutComponent
+      ),
+    children: [
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./features/auth/login/login.component').then(
+            (m) => m.LoginComponent
+          ),
+        title: 'Sign In — SpaceIA',
+      },
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
+    ],
+  },
+  {
     path: '',
     loadComponent: () =>
       import('./shared/layouts/admin-layout/admin-layout.component').then(

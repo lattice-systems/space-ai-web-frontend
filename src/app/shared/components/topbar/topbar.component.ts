@@ -261,7 +261,7 @@ const CATEGORY_COLOR: Record<string, string> = {
       </div>
 
       <!-- ── Menú notificaciones ── -->
-      <mat-menu #notificationsMenu="matMenu" xPosition="before" [panelClass]="'!min-w-80'">
+      <mat-menu #notificationsMenu="matMenu" xPosition="before" class="!min-w-80">
         <div class="px-4 py-3 border-b border-slate-100 pointer-events-none">
           <p class="text-sm font-semibold text-slate-800 m-0">Notificaciones</p>
           <p class="text-xs m-0 text-slate-400">3 sin leer</p>
@@ -310,6 +310,17 @@ export class TopbarComponent {
   private readonly router = inject(Router);
 
   // ── Título dinámico por ruta ──────────────────────────────────────────────
+  readonly currentTitle = toSignal(
+    this.router.events.pipe(
+      filter((e) => e instanceof NavigationEnd),
+      map((e) => {
+        const segment = (e as NavigationEnd).urlAfterRedirects.split('/')[1];
+        return ROUTE_TITLES[segment] ?? 'SpaceIA';
+      }),
+      startWith(ROUTE_TITLES[this.router.url.split('/')[1]] ?? 'SpaceIA')
+    ),
+    { initialValue: 'Panel Principal' }
+  );
 
   // ── Buscador ──────────────────────────────────────────────────────────────
   readonly searchCtrl = new FormControl<string | SearchItem>('');
@@ -328,6 +339,23 @@ export class TopbarComponent {
   );
 
   /** Resultados filtrados del catálogo */
+  readonly results = toSignal(
+    this.searchCtrl.valueChanges.pipe(
+      debounceTime(150),
+      distinctUntilChanged(),
+      map((value) => {
+        const query = (typeof value === 'string' ? value : value?.label ?? '').trim().toLowerCase();
+        if (query.length < 2) return [];
+        return SEARCH_CATALOG.filter(
+          (item) =>
+            item.label.toLowerCase().includes(query) ||
+            item.subtitle.toLowerCase().includes(query) ||
+            item.category.toLowerCase().includes(query)
+        ).slice(0, 10); // máx 10 resultados
+      })
+    ),
+    { initialValue: [] as SearchItem[] }
+  );
 
   /** Resultados agrupados por categoría */
   readonly groupedResults = toSignal(
