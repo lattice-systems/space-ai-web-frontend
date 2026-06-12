@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, signal, inject } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -317,16 +319,25 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
           Mantener sesión iniciada por 30 días
         </mat-checkbox>
 
+        <!-- Error Message -->
+        @if (errorMessage()) {
+          <div style="color: #EF4444; font-size: 14px; margin-bottom: 16px; text-align: center; background-color: #FEF2F2; padding: 8px; border-radius: 6px; border: 1px solid #FECACA;">
+            {{ errorMessage() }}
+          </div>
+        }
+
         <!-- Submit Button -->
         <button 
           mat-flat-button 
           color="primary" 
           type="submit" 
           class="submit-btn" 
-          [disabled]="loginForm.invalid"
+          [disabled]="loginForm.invalid || isLoading()"
         >
-          Ingresar al Portal
-          <mat-icon iconPositionEnd>arrow_forward</mat-icon>
+          {{ isLoading() ? 'Iniciando sesión...' : 'Ingresar al Portal' }}
+          @if (!isLoading()) {
+            <mat-icon iconPositionEnd>arrow_forward</mat-icon>
+          }
         </button>
 
       </form>
@@ -356,8 +367,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 export class LoginComponent {
   private fb = inject(NonNullableFormBuilder);
   private router = inject(Router);
+  private authService = inject(AuthService);
 
   hidePassword = signal(true);
+  isLoading = signal(false);
+  errorMessage = signal<string | null>(null);
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -371,8 +385,28 @@ export class LoginComponent {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      // Mock login logic - route to dashboard
-      this.router.navigate(['/dashboard']);
+      this.isLoading.set(true);
+      this.errorMessage.set(null);
+
+      const credentials = {
+        email: this.loginForm.controls.email.value,
+        password: this.loginForm.controls.password.value
+      };
+
+      this.authService.login(credentials).subscribe({
+        next: () => {
+          this.isLoading.set(false);
+          this.router.navigate(['/dashboard']);
+        },
+        error: (err: HttpErrorResponse) => {
+          this.isLoading.set(false);
+          if (err.status === 401 && err.error && (err.error as any).error) {
+            this.errorMessage.set((err.error as any).error);
+          } else {
+            this.errorMessage.set('Ocurrió un error al iniciar sesión. Intenta nuevamente.');
+          }
+        }
+      });
     } else {
       this.loginForm.markAllAsTouched();
     }

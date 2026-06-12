@@ -35,7 +35,7 @@ import { RouterOutlet } from '@angular/router';
     .left-bg {
       position: absolute;
       inset: 0;
-      background: url('/campus-bg.jpg') center/cover no-repeat;
+      background: url('/images/campus-bg.jpg') center/cover no-repeat;
       z-index: 0;
     }
 
